@@ -1,0 +1,35 @@
+.todoItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50rem;
+  padding: 2rem;
+  height: 2rem;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 1.8rem;
+
+  .iconsItems {
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem
+  }
+
+  .iconEdit {
+    color: #e6bf0a;
+  }
+
+  .iconTrash {
+    color: #e24c50;
+  }
+
+  .checkbox {
+    -ms-transform: scale(1.8); 
+    -moz-transform: scale(1.8); 
+    -webkit-transform: scale(1.8); 
+    -o-transform: scale(1.8); 
+    transform: scale(1.8);
+    cursor: pointer;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useToastData } from "./hooks/useToastData";
 import "./toastNotifications.styles.scss";
 import { AiOutlineClose } from "react-icons/ai";
