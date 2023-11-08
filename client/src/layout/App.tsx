@@ -2,5 +2,11 @@ import { ToastNotifications } from "../components";
 import "../styles/global.scss";
 
 export const App = () => {
-  return <ToastNotifications type="success" />;
+  return (
+    <div className="wrapper">
+      <ToastNotifications type="success" />
+      <ToastNotifications type="success" />
+      <ToastNotifications type="success" />
+    </div>
+  );
 };
