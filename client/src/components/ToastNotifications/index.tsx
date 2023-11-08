@@ -1,6 +1,5 @@
 import { useToastData } from "./hooks/useToastData";
-import "./styles.scss";
-
+import "./toastNotifications.styles.scss";
 import { AiOutlineClose } from "react-icons/ai";
 
 export type messageType = "success" | "error" | "warning" | "info";
@@ -21,16 +20,18 @@ export const ToastNotifications = ({
   };
 
   return (
-    <div className="notificationDiv">
-      <div className="notification">
-        <div style={beforeStyle} className="animationDiv"></div>
-        <div className="iconClass" style={{ color: backgroundColor }}>
-          {IconComponent && <IconComponent />}
+    <div className="wrapper">
+      <div className="notificationDiv">
+        <div className="notification">
+          <div style={beforeStyle} className="animationDiv"></div>
+          <div className="iconClass" style={{ color: backgroundColor }}>
+            {IconComponent && <IconComponent />}
+          </div>
+          <span>{description ? description : defaultMessage}</span>
         </div>
-        <span>{description ? description : defaultMessage}</span>
-      </div>
-      <div className="iconCloseClass">
-        <AiOutlineClose />
+        <div className="iconCloseClass">
+          <AiOutlineClose />
+        </div>
       </div>
     </div>
   );

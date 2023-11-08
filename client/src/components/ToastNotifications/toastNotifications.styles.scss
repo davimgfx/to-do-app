@@ -18,13 +18,18 @@
     transform: translateX(-10px);
   }
 }
+.wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
 
 .notificationDiv {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  width: 30rem;
+  width: 31rem;
   gap: 3rem;
   height: 5rem;
   border-radius: 5px;
@@ -41,7 +46,7 @@
     height: 5px;
     bottom: 0;
     left: 0;
-    width: 32rem;
+    width: 31rem;
     border-radius: 5px;
     animation: progress 5s linear forwards;
   }
