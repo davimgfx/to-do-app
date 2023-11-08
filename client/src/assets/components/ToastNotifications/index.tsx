@@ -1,14 +1,9 @@
+import { useToastData } from "./hooks/useToastData";
 import "./styles.scss";
 
-import {
-  AiFillCheckCircle,
-  AiFillCloseCircle,
-  AiFillWarning,
-  AiFillInfoCircle,
-  AiOutlineClose
-} from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
-type messageType = "success" | "error" | "warning" | "info";
+export type messageType = "success" | "error" | "warning" | "info";
 
 interface ToastNotificationsProps {
   type: messageType;
@@ -19,37 +14,24 @@ export const ToastNotifications = ({
   type,
   description,
 }: ToastNotificationsProps) => {
-  let IconComponent: React.ElementType | null = null;
-  let backgroundColor = "";
-  let defaultMessage = "";
+  const { backgroundColor, defaultMessage, IconComponent } = useToastData(type);
 
-  if (type === "success") {
-    IconComponent = AiFillCheckCircle;
-    backgroundColor = "#0FBD34";
-    defaultMessage = "Success: This is a success toast."
-  } else if (type === "error") {
-    IconComponent = AiFillCloseCircle;
-    backgroundColor = "#E24C50";
-    defaultMessage = "Error: This is an error toast."
-  } else if (type === "warning") {
-    IconComponent = AiFillWarning;
-    defaultMessage = "Warning: This is a warning toast."
-    backgroundColor = "#E6BF0A";
-  } else if (type === "info") {
-    IconComponent = AiFillInfoCircle;
-    backgroundColor = "#3698DB";
-    defaultMessage = "Info: This is an information toast."
-  }
-
-  
+  const beforeStyle = {
+    background: `${backgroundColor}`,
+  };
 
   return (
     <div className="notificationDiv">
       <div className="notification">
-        <div className="iconClass" style={{ color: backgroundColor }}>{IconComponent && <IconComponent />}</div>
+        <div style={beforeStyle} className="animationDiv"></div>
+        <div className="iconClass" style={{ color: backgroundColor }}>
+          {IconComponent && <IconComponent />}
+        </div>
         <span>{description ? description : defaultMessage}</span>
       </div>
-      <div className="iconCloseClass"><AiOutlineClose/></div>
+      <div className="iconCloseClass">
+        <AiOutlineClose />
+      </div>
     </div>
   );
 };

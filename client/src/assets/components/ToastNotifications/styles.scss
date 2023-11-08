@@ -1,22 +1,22 @@
-@keyframes progress{
-    100%{
-        width: 0%;
-    }
+@keyframes progress {
+  100% {
+    width: 0%;
+  }
 }
 
 @keyframes show_toast {
-    0%{
-        transform: translateX(100%);
-    }
-    40%{
-        transform: translateX(-5%);
-    }
-    80%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(-10px);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
 }
 
 .notificationDiv {
@@ -35,9 +35,7 @@
   overflow: hidden;
   animation: show_toast 0.3s ease forwards;
 
-
-
-  &::before {
+  .animationDiv {
     position: absolute;
     content: "";
     height: 5px;
@@ -45,10 +43,8 @@
     left: 0;
     width: 32rem;
     border-radius: 5px;
-    background: rgb(0, 0, 0);
     animation: progress 5s linear forwards;
   }
-
   .notification {
     display: flex;
     align-items: center;
