@@ -10,26 +10,32 @@
   font-size: 1.8rem;
 
   .iconsItems {
-    font-size: 1.6rem;
-    cursor: pointer;
+    font-size: 1.8rem;
     display: flex;
+    align-items: center;
     gap: 1rem
   }
 
   .iconEdit {
     color: #e6bf0a;
+    cursor: pointer;
   }
 
   .iconTrash {
     color: #e24c50;
+    cursor: pointer;
+  }
+
+  .checkboxContainer{
+    transform: translateY(0.2rem);
   }
 
   .checkbox {
-    -ms-transform: scale(1.8); 
-    -moz-transform: scale(1.8); 
-    -webkit-transform: scale(1.8); 
-    -o-transform: scale(1.8); 
-    transform: scale(1.8);
+    -ms-transform: scale(1.3); 
+    -moz-transform: scale(1.3); 
+    -webkit-transform: scale(1.3); 
+    -o-transform: scale(1.3); 
+    transform: scale(1.3);
     cursor: pointer;
   }
 }
