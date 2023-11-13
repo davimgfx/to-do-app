@@ -1,24 +1,36 @@
 require("dotenv").config();
 
-const express = require('express');
-
+const express = require("express");
 const app = express();
+const tasks = require("./routes/tasks");
+const connectDB = require("./db/connect");
 
-const tasks = require('./routes/tasks')
-
-app.get('/hello', (req, res) => {
-    res.send("aaaa");
+app.get("/hello", (req, res) => {
+  res.send("aaaa");
 });
-
-const port = process.env.PORT || 3005;
 
 // middleware
 app.use(express.json());
 
-
 // routers
-app.listen(port, () => {
-    console.log(`Server on http://localhost:${port}`);
-});
 
-app.use("/api/v1/tasks", tasks)
+app.use("/api/v1/tasks", tasks);
+
+// Connect to mongo
+
+const url = process.env.CONNECTIONSTRING;
+
+const port = process.env.PORT || 3005;
+
+const start = async () => {
+  try {
+    await connectDB(url);
+    app.listen(port, () => {
+      console.log(`Server on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
