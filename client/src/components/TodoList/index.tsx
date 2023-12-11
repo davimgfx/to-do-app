@@ -1,17 +1,16 @@
-"use client";
 import { useEffect, useState } from "react";
-import { ToastNotifications, TodoItem } from "..";
+import { TodoItem } from "..";
 import Tasks from "../../api/Tasks";
 import "./todoList.styles.scss";
+import { setNotificationProps } from "../../layout/MainLayout";
 interface TaskProps {
   name: string;
   _id: string;
   completed: boolean;
 }
 
-export const TodoList = () => {
+export const TodoList = ({ setNotifications } : setNotificationProps) => {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [deletedTaskIds, setDeletedTaskIds] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,13 +27,18 @@ export const TodoList = () => {
   const handleDeleteTask = async (id: string) => {
     try {
       await Tasks.delete(`/${id}`);
-      setDeletedTaskIds((prevIds) => [...prevIds, id]); 
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        { type: "success", description: "Task remove successfully!" },
+      ]);
     } catch (error) {
       console.log(error);
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        { type: "error", description: "Something is wrong!" },
+      ]);
     }
   };
-
-
 
   return (
     <>
@@ -49,11 +53,6 @@ export const TodoList = () => {
               onDelete={() => handleDeleteTask(task._id)}
             />
           ))}
-      </div>
-      <div className="wrapper">
-        {deletedTaskIds.map((taskId) => (
-          <ToastNotifications key={taskId} type="success" />
-        ))}
       </div>
     </>
   );
