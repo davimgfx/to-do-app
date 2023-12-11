@@ -49,7 +49,7 @@ export const ToastNotifications = ({
   }, [isHidden]);
 
   return (
-    <div className={`wrapper ${isHidden ? "hidden" : ""}`}>
+    <div className={`${isHidden ? "hidden" : ""}`}>
       <div className="notificationDiv">
         <div className="notification">
           <div style={beforeStyle} className="animationDiv"></div>

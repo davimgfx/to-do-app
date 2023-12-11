@@ -1,4 +1,4 @@
-import { AddTodo, TodoItem } from "../../components";
+import { AddTodo, TodoList } from "../../components";
 
 import "./MainLayout.styles.scss"
 
@@ -7,10 +7,8 @@ export const MainLayout = () => {
     <div className="mainLayout">
       <h1>To-do Items</h1>
       <AddTodo />
-      <TodoItem todoName="Do the homework" />
-      <TodoItem todoName="Do the homework" />
-      <TodoItem todoName="Do the homework" />
-      <TodoItem todoName="Do the homework" />
+      <TodoList/>
+   
       
     </div>
   );

@@ -1,4 +1,17 @@
 .todoListContainer{
+    border-radius: 10px;
     border: 1px solid gray;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}
+
+.wrapper{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
 }
