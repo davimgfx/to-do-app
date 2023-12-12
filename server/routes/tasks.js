@@ -8,7 +8,6 @@ const {
   updateTask,
   deleteTask,
   createTask,
-  editTask,
 } = require("../controllers/tasks");
 
 //app.get("/api/v1/tasks") - get all the tasks
