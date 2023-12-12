@@ -3,7 +3,7 @@ import { AddTodo, ToastNotifications, TodoList } from "../../components";
 import type { messageType } from "../../components";
 import "./MainLayout.styles.scss";
 
-interface Notification {
+export interface Notification {
   type: messageType;
   description: string;
 }

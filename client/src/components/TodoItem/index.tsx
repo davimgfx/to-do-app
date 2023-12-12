@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
+import { Notification } from "../../layout/MainLayout";
+import { Modal } from "..";
 import "./todoItem.styles.scss";
 
 interface TodoItemProps {
@@ -7,13 +9,20 @@ interface TodoItemProps {
   done: boolean;
   id: string;
   onDelete: () => void;
+  setNotifications: Dispatch<SetStateAction<Notification[]>>;
 }
 
-export const TodoItem = ({ todoName, done, onDelete }: TodoItemProps) => {
-  const [isDone, setIsDone] = useState(false);
+export const TodoItem = ({
+  todoName,
+  done,
+  onDelete,
+  id,
+  setNotifications,
+}: TodoItemProps) => {
+  const [isModalOn, setIsModalOn] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setIsDone(!isDone);
+  const handleModal = () => {
+    setIsModalOn(!isModalOn);
   };
 
   return (
@@ -21,16 +30,18 @@ export const TodoItem = ({ todoName, done, onDelete }: TodoItemProps) => {
       <p>{done ? <del>{todoName}</del> : todoName}</p>
 
       <div className="iconsItems">
-        <FiEdit className="iconEdit" />
+        <FiEdit className="iconEdit" onClick={handleModal} />
         <FiTrash className="iconTrash" onClick={() => onDelete()} />
-        <label className="checkboxContainer">
-          <input
-            type="checkbox"
-            className="checkbox"
-            checked={done}
-            onChange={handleCheckboxChange}
+        <label className="checkboxContainer"></label>
+        {isModalOn && (
+          <Modal
+            handleModal={handleModal}
+            id={id}
+            name={todoName}
+            done={done}
+            setNotifications={setNotifications}
           />
-        </label>
+        )}
       </div>
     </div>
   );

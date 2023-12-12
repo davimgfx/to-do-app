@@ -9,7 +9,7 @@ interface TaskProps {
   completed: boolean;
 }
 
-export const TodoList = ({ setNotifications } : setNotificationProps) => {
+export const TodoList = ({ setNotifications }: setNotificationProps) => {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export const TodoList = ({ setNotifications } : setNotificationProps) => {
   return (
     <>
       <div className="todoListContainer">
-        {tasks &&
+        {tasks && tasks.length > 0 ? (
           tasks.map((task) => (
             <TodoItem
               todoName={task.name}
@@ -51,8 +51,12 @@ export const TodoList = ({ setNotifications } : setNotificationProps) => {
               done={task.completed}
               id={task._id}
               onDelete={() => handleDeleteTask(task._id)}
+              setNotifications={setNotifications}
             />
-          ))}
+          ))
+        ) : (
+          <p>There is no task at the moment!</p>
+        )}
       </div>
     </>
   );
